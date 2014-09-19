@@ -8,6 +8,10 @@
 // option. This file may not be copied, modified, or distributed
 // except according to those terms.
 
+//ignore-freebsd
+//ignore-ios
+//ignore-dragonfly
+
 #![feature(asm)]
 
 use std::io::process::Command;
