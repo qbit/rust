@@ -40,6 +40,9 @@ impl Drop for Handler {
 // It steals the current task from local_ptr and neither returns it nor
 // properly destroys it leaving the runtime in a broken state.
 // This is fine since we'll exit the process soon after this is called.
+#[cfg(windows)]
+#[cfg(target_os = "linux")]
+#[cfg(target_os = "macos")]
 unsafe fn get_task_info() -> Option<(uint, SendStr)> {
     use core::mem;
     use core::prelude::*;
