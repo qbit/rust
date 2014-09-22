@@ -465,8 +465,12 @@ pub fn expand_quote_method(cx: &mut ExtCtxt,
                            tts: &[ast::TokenTree])
                            -> Box<base::MacResult+'static> {
     let e_param_colons = cx.expr_none(sp);
+    let e_visibility = cx.expr_path(cx.path(sp, vec!(
+        id_ext("syntax"),
+        id_ext("ast"),
+        id_ext("Inherited"))));
     let expanded = expand_parse_call(cx, sp, "parse_method",
-                                     vec!(e_param_colons), tts);
+                                     vec!(e_param_colons, e_visibility), tts);
     base::MacExpr::new(expanded)
 }
 
