@@ -22,6 +22,7 @@ use libc;
 #[cfg(target_os = "macos")]
 #[cfg(target_os = "ios")]
 #[cfg(target_os = "freebsd")]
+#[cfg(target_os = "openbsd")]
 #[cfg(target_os = "dragonfly")]
 pub static FIONBIO: libc::c_ulong = 0x8004667e;
 #[cfg(target_os = "linux", target_arch = "x86")]
@@ -36,6 +37,7 @@ pub static FIONBIO: libc::c_ulong = 0x667e;
 #[cfg(target_os = "macos")]
 #[cfg(target_os = "ios")]
 #[cfg(target_os = "freebsd")]
+#[cfg(target_os = "openbsd")]
 #[cfg(target_os = "dragonfly")]
 pub static FIOCLEX: libc::c_ulong = 0x20006601;
 #[cfg(target_os = "linux", target_arch = "x86")]
@@ -50,6 +52,7 @@ pub static FIOCLEX: libc::c_ulong = 0x6601;
 #[cfg(target_os = "macos")]
 #[cfg(target_os = "ios")]
 #[cfg(target_os = "freebsd")]
+#[cfg(target_os = "openbsd")]
 #[cfg(target_os = "dragonfly")]
 pub static MSG_DONTWAIT: libc::c_int = 0x80;
 #[cfg(target_os = "linux")]
@@ -103,6 +106,7 @@ mod select {
 
 #[cfg(target_os = "android")]
 #[cfg(target_os = "freebsd")]
+#[cfg(target_os = "openbsd")]
 #[cfg(target_os = "dragonfly")]
 #[cfg(target_os = "linux")]
 mod select {
@@ -218,6 +222,7 @@ mod signal {
 #[cfg(target_os = "macos")]
 #[cfg(target_os = "ios")]
 #[cfg(target_os = "freebsd")]
+#[cfg(target_os = "openbsd")]
 #[cfg(target_os = "dragonfly")]
 mod signal {
     use libc;
@@ -235,6 +240,7 @@ mod signal {
     #[cfg(target_os = "ios")]
     pub type sigset_t = u32;
     #[cfg(target_os = "freebsd")]
+    #[cfg(target_os = "openbsd")]
     #[cfg(target_os = "dragonfly")]
     #[repr(C)]
     pub struct sigset_t {
@@ -264,6 +270,7 @@ mod signal {
     }
 
     #[cfg(target_os = "freebsd")]
+    #[cfg(target_os = "openbsd")]
     #[cfg(target_os = "dragonfly")]
     #[repr(C)]
     pub struct sigaction {

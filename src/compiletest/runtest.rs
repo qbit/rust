@@ -943,6 +943,7 @@ fn check_expected_errors(expected_errors: Vec<errors::ExpectedError> ,
     #[cfg(target_os = "linux")]
     #[cfg(target_os = "macos")]
     #[cfg(target_os = "freebsd")]
+    #[cfg(target_os = "openbsd")]
     #[cfg(target_os = "dragonfly")]
     fn prefix_matches( line : &str, prefix : &str ) -> bool {
         line.starts_with( prefix )
@@ -1347,6 +1348,7 @@ fn program_output(config: &Config, testfile: &Path, lib_path: &str, prog: String
 #[cfg(target_os = "linux")]
 #[cfg(target_os = "macos")]
 #[cfg(target_os = "freebsd")]
+#[cfg(target_os = "openbsd")]
 #[cfg(target_os = "dragonfly")]
 fn make_cmdline(_libpath: &str, prog: &str, args: &[String]) -> String {
     format!("{} {}", prog, args.connect(" "))

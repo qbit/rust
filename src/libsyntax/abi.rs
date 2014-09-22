@@ -12,7 +12,7 @@ use std::fmt;
 
 #[deriving(PartialEq)]
 pub enum Os { OsWindows, OsMacos, OsLinux, OsAndroid, OsFreebsd, OsiOS,
-              OsDragonfly }
+              OsDragonfly, OsOpenbsd }
 
 #[deriving(PartialEq, Eq, Hash, Encodable, Decodable, Clone)]
 pub enum Abi {
@@ -152,6 +152,7 @@ impl fmt::Show for Os {
             OsiOS => "ios".fmt(f),
             OsAndroid => "android".fmt(f),
             OsFreebsd => "freebsd".fmt(f),
+            OsOpenbsd => "openbsd".fmt(f),
             OsDragonfly => "dragonfly".fmt(f)
         }
     }

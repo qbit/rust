@@ -493,6 +493,7 @@ pub fn filename_for_input(sess: &Session,
                 abi::OsLinux => (loader::LINUX_DLL_PREFIX, loader::LINUX_DLL_SUFFIX),
                 abi::OsAndroid => (loader::ANDROID_DLL_PREFIX, loader::ANDROID_DLL_SUFFIX),
                 abi::OsFreebsd => (loader::FREEBSD_DLL_PREFIX, loader::FREEBSD_DLL_SUFFIX),
+                abi::OsOpenbsd => (loader::OPENBSD_DLL_PREFIX, loader::OPENBSD_DLL_SUFFIX),
                 abi::OsDragonfly => (loader::DRAGONFLY_DLL_PREFIX, loader::DRAGONFLY_DLL_SUFFIX),
                 abi::OsiOS => unreachable!(),
             };
@@ -511,6 +512,7 @@ pub fn filename_for_input(sess: &Session,
                 abi::OsLinux |
                 abi::OsAndroid |
                 abi::OsFreebsd |
+                abi::OsOpenbsd |
                 abi::OsDragonfly |
                 abi::OsiOS => out_filename.clone(),
             }
@@ -1103,6 +1105,10 @@ fn link_args(cmd: &mut Command,
         cmd.args(["-L/usr/local/lib",
                   "-L/usr/local/lib/gcc46",
                   "-L/usr/local/lib/gcc44"]);
+    }
+    else if sess.targ_cfg.os == abi::OsOpen {
+        cmd.args(["-L/usr/local/lib",
+                  "-L/usr/local/lib/gcc"]);
     }
     else if sess.targ_cfg.os == abi::OsDragonfly {
         cmd.args(["-L/usr/local/lib",

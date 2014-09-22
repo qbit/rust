@@ -56,6 +56,8 @@ for llconfig in sys.argv[4:]:
         os = 'linux'
     elif 'freebsd' in os:
         os = 'freebsd'
+    elif 'openbsd' in os:
+        os = 'openbsd'
     elif 'dragonfly' in os:
         os = 'dragonfly'
     elif 'android' in os:

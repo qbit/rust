@@ -22,6 +22,7 @@ static OS_TABLE: &'static [(&'static str, &'static str)] = &[
     ("android", "android"),
     ("linux", "linux"),
     ("freebsd", "freebsd"),
+    ("openbsd", "openbsd"),
     ("dragonfly", "dragonfly"),
 ];
 

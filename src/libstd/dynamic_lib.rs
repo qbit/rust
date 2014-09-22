@@ -193,6 +193,7 @@ mod test {
     #[cfg(target_os = "linux")]
     #[cfg(target_os = "macos")]
     #[cfg(target_os = "freebsd")]
+    #[cfg(target_os = "openbsd")]
     #[cfg(target_os = "dragonfly")]
     fn test_errors_do_not_crash() {
         // Open /dev/null as a library to get an error, and make sure
@@ -210,6 +211,7 @@ mod test {
 #[cfg(target_os = "macos")]
 #[cfg(target_os = "ios")]
 #[cfg(target_os = "freebsd")]
+#[cfg(target_os = "openbsd")]
 #[cfg(target_os = "dragonfly")]
 pub mod dl {
 

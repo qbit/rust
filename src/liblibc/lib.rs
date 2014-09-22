@@ -278,6 +278,7 @@ pub use funcs::bsd43::{shutdown};
 
 #[cfg(target_os = "linux")] #[cfg(target_os = "android")]
 #[cfg(target_os = "freebsd")] #[cfg(target_os = "dragonfly")]
+#[cfg(target_os = "openbsd")]
 pub use consts::os::posix01::{CLOCK_REALTIME, CLOCK_MONOTONIC};
 
 #[cfg(target_os = "linux")] #[cfg(target_os = "android")]
@@ -288,9 +289,11 @@ pub use types::os::arch::extra::{sockaddr_ll};
 pub use consts::os::extra::{AF_PACKET};
 
 #[cfg(unix, not(target_os = "freebsd"))]
+#[cfg(unix, not(target_os = "openbsd"))]
 pub use consts::os::extra::{MAP_STACK};
 
 #[cfg(target_os = "freebsd")]
+#[cfg(getget_os = "openbsd")]
 #[cfg(target_os = "dragonfly")]
 pub use consts::os::bsd44::{TCP_KEEPIDLE};
 
@@ -816,6 +819,7 @@ pub mod types {
     }
 
     #[cfg(target_os = "freebsd")]
+    #[cfg(target_os = "openbsd")]
     pub mod os {
         pub mod common {
             pub mod posix01 {
@@ -3159,6 +3163,7 @@ pub mod consts {
     }
 
     #[cfg(target_os = "freebsd")]
+    #[cfg(target_os = "openbsd")]
     #[cfg(target_os = "dragonfly")]
     pub mod os {
         pub mod c95 {
@@ -3423,6 +3428,7 @@ pub mod consts {
             #[cfg(target_os = "freebsd", target_arch = "mipsel")]
             #[cfg(target_os = "freebsd", target_arch = "x86")]
             #[cfg(target_os = "freebsd", target_arch = "x86_64")]
+            #[cfg(target_os = "openbsd")]
             pub static PTHREAD_STACK_MIN: size_t = 2048;
 
             #[cfg(target_os = "dragonfly")]
@@ -3495,6 +3501,7 @@ pub mod consts {
             pub static CTL_KERN: c_int = 1;
             pub static KERN_PROC: c_int = 14;
             #[cfg(target_os = "freebsd")]
+            #[cfg(target_os = "openbsd")]
             pub static KERN_PROC_PATHNAME: c_int = 12;
             #[cfg(target_os = "dragonfly")]
             pub static KERN_PROC_PATHNAME: c_int = 9;
@@ -4265,6 +4272,7 @@ pub mod funcs {
     #[cfg(target_os = "macos")]
     #[cfg(target_os = "ios")]
     #[cfg(target_os = "freebsd")]
+    #[cfg(target_os = "openbsd")]
     #[cfg(target_os = "dragonfly")]
     pub mod posix88 {
         pub mod stat_ {
@@ -4278,6 +4286,7 @@ pub mod funcs {
 
                 #[cfg(target_os = "linux")]
                 #[cfg(target_os = "freebsd")]
+                #[cfg(target_os = "openbsd")]
                 #[cfg(target_os = "dragonfly")]
                 #[cfg(target_os = "android")]
                 #[cfg(target_os = "ios")]
@@ -4292,6 +4301,7 @@ pub mod funcs {
 
                 #[cfg(target_os = "linux")]
                 #[cfg(target_os = "freebsd")]
+                #[cfg(target_os = "openbsd")]
                 #[cfg(target_os = "dragonfly")]
                 #[cfg(target_os = "android")]
                 #[cfg(target_os = "ios")]
@@ -4484,6 +4494,7 @@ pub mod funcs {
     #[cfg(target_os = "macos")]
     #[cfg(target_os = "ios")]
     #[cfg(target_os = "freebsd")]
+    #[cfg(target_os = "openbsd")]
     #[cfg(target_os = "dragonfly")]
     pub mod posix01 {
         pub mod stat_ {
@@ -4493,6 +4504,7 @@ pub mod funcs {
             extern {
                 #[cfg(target_os = "linux")]
                 #[cfg(target_os = "freebsd")]
+                #[cfg(target_os = "openbsd")]
                 #[cfg(target_os = "dragonfly")]
                 #[cfg(target_os = "android")]
                 #[cfg(target_os = "ios")]
@@ -4602,6 +4614,7 @@ pub mod funcs {
     #[cfg(target_os = "macos")]
     #[cfg(target_os = "ios")]
     #[cfg(target_os = "freebsd")]
+    #[cfg(target_os = "openbsd")]
     #[cfg(target_os = "dragonfly")]
     pub mod posix08 {
         pub mod unistd {
@@ -4688,6 +4701,7 @@ pub mod funcs {
     #[cfg(target_os = "macos")]
     #[cfg(target_os = "ios")]
     #[cfg(target_os = "freebsd")]
+    #[cfg(target_os = "openbsd")]
     #[cfg(target_os = "dragonfly")]
     pub mod bsd44 {
         use types::common::c95::{c_void};
@@ -4754,6 +4768,7 @@ pub mod funcs {
     }
 
     #[cfg(target_os = "freebsd")]
+    #[cfg(target_os = "openbsd")]
     #[cfg(target_os = "dragonfly")]
     pub mod extra {
     }

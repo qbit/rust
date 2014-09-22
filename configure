@@ -291,6 +291,10 @@ case $CFG_OSTYPE in
         CFG_OSTYPE=unknown-freebsd
         ;;
 
+    OpenBSD)
+	CFG_OSTYPE=unknown-openbsd
+	;;
+
     DragonFly)
         CFG_OSTYPE=unknown-dragonfly
         ;;
@@ -606,10 +610,10 @@ then
     putvar CFG_LOCAL_RUST_ROOT
 fi
 
-# Force freebsd to build with clang; gcc doesn't like us there
-if [ $CFG_OSTYPE = unknown-freebsd ]
+# Force freebsd and openbsd to build with clang; gcc doesn't like us there
+if [ $CFG_OSTYPE = unknown-freebsd ] || [ $CFG_OSTYPE = unknown-openbsd ]
 then
-    step_msg "on FreeBSD, forcing use of clang"
+    step_msg "on FreeBSD and OpenBSD, forcing use of clang"
     CFG_ENABLE_CLANG=1
     putvar CFG_ENABLE_CLANG
 fi

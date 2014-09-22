@@ -437,6 +437,7 @@ pub fn default_configuration(sess: &Session) -> ast::CrateConfig {
         abi::OsLinux =>     InternedString::new("linux"),
         abi::OsAndroid =>   InternedString::new("android"),
         abi::OsFreebsd =>   InternedString::new("freebsd"),
+        abi::OsOpenbsd =>   InternedString::new("openbsd"),
         abi::OsDragonfly => InternedString::new("dragonfly"),
         abi::OsiOS =>       InternedString::new("ios"),
     };
@@ -501,6 +502,7 @@ static os_names : &'static [(&'static str, abi::Os)] = &[
     ("android",   abi::OsAndroid),
     ("linux",     abi::OsLinux),
     ("freebsd",   abi::OsFreebsd),
+    ("openbsd",   abi::OsOpenbsd),
     ("dragonfly", abi::OsDragonfly),
     ("ios",       abi::OsiOS)];
 

@@ -39,6 +39,11 @@ extern {}
 #[link(name = "pthread")]
 extern {}
 
+#[cfg(target_os = "openbsd")]
+#[link(name = "execinfo")]
+#[link(name = "pthread")]
+extern {}
+
 #[cfg(target_os = "dragonfly")]
 #[link(name = "pthread")]
 extern {}

@@ -739,6 +739,7 @@ extern {}
 extern {}
 
 #[cfg(target_os = "freebsd")]
+#[cfg(target_os = "openbsd")]
 #[cfg(target_os = "dragonfly")]
 #[link(name = "kvm")]
 extern {}

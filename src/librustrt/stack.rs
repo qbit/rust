@@ -210,6 +210,10 @@ pub unsafe fn record_sp_limit(limit: uint) {
     unsafe fn target_record_sp_limit(limit: uint) {
         asm!("movq $0, %fs:24" :: "r"(limit) :: "volatile")
     }
+    #[cfg(target_arch = "x86_64", target_os = "openbsd")] #[inline(always)]
+    unsafe fn target_record_sp_limit(limit: uint) {
+        asm!("movq $0, %fs:24" :: "r"(limit) :: "volatile")
+    }
     #[cfg(target_arch = "x86_64", target_os = "dragonfly")] #[inline(always)]
     unsafe fn target_record_sp_limit(limit: uint) {
         asm!("movq $0, %fs:32" :: "r"(limit) :: "volatile")
@@ -223,6 +227,7 @@ pub unsafe fn record_sp_limit(limit: uint) {
               movl $0, %gs:(%eax)" :: "r"(limit) : "eax" : "volatile")
     }
     #[cfg(target_arch = "x86", target_os = "linux")]
+    #[cfg(target_arch = "x86", target_os = "openbsd")]
     #[cfg(target_arch = "x86", target_os = "freebsd")] #[inline(always)]
     unsafe fn target_record_sp_limit(limit: uint) {
         asm!("movl $0, %gs:48" :: "r"(limit) :: "volatile")
@@ -292,6 +297,12 @@ pub unsafe fn get_sp_limit() -> uint {
         asm!("movq %fs:24, $0" : "=r"(limit) ::: "volatile");
         return limit;
     }
+    #[cfg(target_arch = "x86_64", target_os = "openbsd")] #[inline(always)]
+    unsafe fn target_get_sp_limit() -> uint {
+        let limit;
+        asm!("movq %fs:24, $0" : "=r"(limit) ::: "volatile");
+        return limit;
+    }
     #[cfg(target_arch = "x86_64", target_os = "dragonfly")] #[inline(always)]
     unsafe fn target_get_sp_limit() -> uint {
         let limit;
@@ -310,6 +321,7 @@ pub unsafe fn get_sp_limit() -> uint {
         return limit;
     }
     #[cfg(target_arch = "x86", target_os = "linux")]
+    #[cfg(target_arch = "x86", target_os = "openbsd")]
     #[cfg(target_arch = "x86", target_os = "freebsd")] #[inline(always)]
     unsafe fn target_get_sp_limit() -> uint {
         let limit;

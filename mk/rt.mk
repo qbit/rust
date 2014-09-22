@@ -171,6 +171,8 @@ else ifeq ($(OSTYPE_$(1)), apple-ios)
   JEMALLOC_ARGS_$(1) := --disable-tls
 else ifeq ($(OSTYPE_$(1)), unknown-freebsd)
   LIBUV_OSTYPE_$(1) := freebsd
+else ifeq ($(OSTYPE_$(1)), unknown-openbsd)
+  LIBUV_OSTYPE_$(1) := openbsd
 else ifeq ($(OSTYPE_$(1)), unknown-dragonfly)
   LIBUV_OSTYPE_$(1) := freebsd
   # required on DragonFly, otherwise gyp fails with a Python exception

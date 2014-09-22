@@ -475,6 +475,7 @@ mod imp {
             static mut LAST_FILENAME: [libc::c_char, ..256] = [0, ..256];
             if !STATE.is_null() { return STATE }
             let selfname = if cfg!(target_os = "freebsd") ||
+                              cfg!(target_os = "openbsd") ||
                               cfg!(target_os = "dragonfly") {
                 os::self_exe_name()
             } else {
